@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: PaymentApp
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/payment_table
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver 
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  logging:
+    level:
+      org.hibernate.SQL: DEBUG
+
+server:
+  port: 1003
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:1006/eureka
+    register-with-eureka: true
+    fetch-registry: true
+

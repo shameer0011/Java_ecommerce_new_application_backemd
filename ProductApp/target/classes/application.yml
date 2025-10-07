@@ -1,0 +1,33 @@
+
+spring:
+  application:
+    name: ProductApp
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/product_table
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver 
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  logging:
+    level:
+      org:
+        hibernate:
+          SQL: DEBUG
+
+server:
+  port: 1000
+eureka:
+  instance:
+    prefer-ip-address: true  # Ensures that Eureka uses the IP address for this instance
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVER_ADDRESS:http://localhost:1006/eureka}  # Eureka server URL
+    register-with-eureka: true  # Registers the service with Eureka
+    fetch-registry: true  # Fetches the registry of services from Eureka
